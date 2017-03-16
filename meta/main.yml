@@ -9,7 +9,7 @@ galaxy_info:
     versions:
     - all
   galaxy_tags:
-    - mysql
     - system
+    - iptables
 dependencies: []
 
