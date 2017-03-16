@@ -1,0 +1,37 @@
+---
+
+- name: Install UFW
+  apt: pkg=ufw state=present
+
+- name: Activate
+  ufw: state=enabled policy=allow
+
+- name: Create single Port Rules
+  ufw:
+    rule={{ item.1.rule|default('allow') }}
+    interface={{ item.0.interface }}
+    src={{ item.0.src_ip|default('any') }}
+    dest={{ item.0.dest_ip }}
+    direction={{ item.1.direction|default('in') }}
+    proto={{ item.1.proto|default('tcp') }}
+    port={{ item.1.port }}
+  with_subelements:
+    - "{{ _iptables.rules }}"
+    - ports
+
+- name: Create Port Range Rules
+  ufw:
+    rule={{ item.1.rule|default('allow') }}
+    interface={{ item.0.interface }}
+    src={{ item.0.src_ip|default('any') }}
+    dest={{ item.0.dest_ip }}
+    direction={{ item.1.direction|default('in') }}
+    proto={{ item.1.proto|default('tcp') }}
+    port="{{ item.1.port }}"
+  with_subelements:
+    - "{{ _iptables.rules }}"
+    - port_ranges
+
+- name: Activate Default Policy
+  ufw: policy={{ _iptables.default_policy.incoming }} direction=incoming
+

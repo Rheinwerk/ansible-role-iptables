@@ -1,0 +1,12 @@
+---
+
+_iptables:
+  default_config: yes
+  default_policy:
+    incoming: allow
+  enabled: No
+  rules:
+    - interface: eth0
+      ports:
+        - { name: ssh, port: 22, proto: tcp, direction=in, rule=allow, delete: no }
+

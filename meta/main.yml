@@ -1,0 +1,15 @@
+galaxy_info:
+  author: Lukas Pustina
+  description: Manages iptables rules via ufw
+  company: Rheinwerk
+  license: license (MIT)
+  min_ansible_version: 2.0
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  galaxy_tags:
+    - mysql
+    - system
+dependencies: []
+
