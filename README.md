@@ -1,6 +1,8 @@
 iptables
 =========
 
+[![CI](https://github.com/Rheinwerk/ansible-role-iptables/actions/workflows/ci.yml/badge.svg)](https://github.com/Rheinwerk/ansible-role-iptables/actions/workflows/ci.yml)
+
 Configures iptables using ufw.
 
 Requirements
